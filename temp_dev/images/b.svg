@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 37.35 34.11">
+	<title>Brodbeck Interactive Logo</title>
+	<g id="Layer_2" data-name="Layer 2">
+		<g id="Layer_1-2" data-name="Layer 1">
+			<path class="b" d="M31,16.76A8.53,8.53,0,0,0,35.43,9c0-5.11-4.48-9-10.28-9H0V.61C3.29,2.32,3.29,3.53,3.29,5L.19,34.11H26.73c5.94,0,10.62-3.95,10.62-9.41C37.35,20.22,33.6,17.59,31,16.76Z"/>
+			<polygon class="menu-bar-top menu-bar" points="25.87 7.01 10.57 7.01 10.23 10.23 25.52 10.23 25.87 7.01"/>
+			<polygon class="menu-bar-middle menu-bar" points="22.72 14.99 9.71 14.99 9.37 18.2 22.38 18.2 22.72 14.99"/>
+			<polygon class="menu-bar-bottom menu-bar" points="27.36 22.96 8.86 22.96 8.51 26.18 27.02 26.18 27.36 22.96"/>
+		</g>
+	</g>
+</svg>

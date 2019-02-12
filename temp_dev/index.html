@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="https://use.typekit.net/hlt5jvl.css">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<style>
+	html {
+		background:#427387;
+	}
+		body {
+			/*background: #f9f6f2;*/
+			font-family: benton-modern-display, serif;
+			font-weight: 400;
+			font-style: normal;
+			padding:0;
+			margin:0;
+		}
+		::selection {
+			background-color: #427387;
+			color: #fff;
+		}
+		::-moz-selection {
+			background-color: #427387;
+			color: #fff;
+		}
+		#logo {
+			width:38px;
+			height:auto;
+			position: fixed;
+			top:30px;
+			left:30px;
+			z-index: 999;
+			/*-webkit-transform: scale(1);
+			transform: scale(1);*/
+			transition: transform 200ms ease;
+			-webkit-transform:translateZ(0);
+			transform:translateZ(0) ;
+			/*padding:10px;*/
+			/*transition:width .2s ease,height .2s ease, top .2s ease, left .2s ease;*/
+		}
+		#logo:hover {
+			/*left:28px;
+			top:28px;*/
+			-webkit-transform: scale(1.075);
+			transform: scale(1.075);
+			transition: transform 200ms ease;
+		}
+		#logo .b {
+			fill:#282720;
+			transition:fill .2s ease;
+		}
+		#logo .b.active-b {
+			fill:#427387;
+		}
+		#logo .menu-bar {
+			fill:#f9f6f2;
+			/*transition:fill .2s ease, opacity .2s ease;*/
+			transition: all 0.3s ease;
+			transition: all 0.3s ease;
+			opacity:1;
+		}
+		#logo .menu-bar.hide-menu-bar{
+			opacity:0;
+		}
+		#logo:hover .b {
+			fill:#427387;
+		}
+
+		#logo .menu-bar-top.bar-top-active {
+			-webkit-transform: rotate(45deg) scale(1.2, 1) translate(3px, -9px);
+	  	transform: rotate(45deg) scale(1.2, 1) translate(3px, -9px);
+		}
+		#logo .menu-bar-bottom.bar-bottom-active {
+			-webkit-transform: rotate(-45deg) translate(-18px, 0);
+	  	transform: rotate(-45deg) translate(-18px, 0);
+		}
+		header {
+			position:fixed;
+			left: -100%;
+			width:100%;
+			top:0;
+			bottom:0;
+			padding:20% 100px 0 40px;
+			background:rgba(40, 39, 32, 0);
+			z-index: 998;
+			-webkit-transition:left .5s ease, background .5s ease;
+			transition:left .5s ease, background .5s ease;
+			/*border-right:1px solid rgba(0, 0, 0, 0.20);*/
+			/*overflow: hidden;*/
+			height:100%;
+			-webkit-transform: translateZ(0); /* promotes to a layer */
+		}
+		header:after {
+			content: '';
+			display: block;
+			border-right:1px solid rgba(0, 0, 0, 0.20);
+			position: absolute;
+			right:-100px;
+			top:0;
+			bottom:0;
+			height:100%;
+			-webkit-transition:right .5s ease;
+			transition:right .5s ease;
+		}
+		header nav a {
+			color:transparent;
+		}
+
+
+
+		header.menu-open {
+			left:0;
+			/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#44443f+0,282720+46&0.98+0,0.98+46 */
+			background: -moz-linear-gradient(-45deg, rgba(68,68,63,0.98) 0%, rgba(40,39,32,0.98) 46%); 
+			background: -webkit-linear-gradient(-45deg, rgba(68,68,63,0.98) 0%,rgba(40,39,32,0.98) 46%); 
+			background: linear-gradient(135deg, rgba(68,68,63,0.98) 0%,rgba(40,39,32,0.98) 46%); 
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fa44443f', endColorstr='#fa282720',GradientType=1 ); 
+			background:rgba(40, 39, 32, 0.98);
+			-webkit-transition:left .5s ease, background .5s ease;
+			transition:left .5s ease, background .5s ease;
+		}
+		header.menu-open:after {
+			right:0;
+		}
+		header.menu-open nav a {
+			color:#f9f6f2;
+		}
+		nav a {
+			display: block;
+			width: inherit;
+			color:#f9f6f2;
+			font-size: 60px;
+			margin:8px 0;
+			padding:10px 0 5px;
+			text-decoration: none;
+			line-height: 1;
+			/*letter-spacing: 2px;*/
+			font-family: BreveTitle-Light; 
+			font-weight: normal; 
+			font-style: normal; 
+			-webkit-font-smoothing: antialiased;
+			position: relative;
+			float:left;
+			clear:both;
+			cursor:url('images/more-arrow.svg'), auto;
+			transition:color .3s ease;
+		}
+
+/*		header nav {
+			opacity:0;
+		}*/
+
+		header .menu-col {
+			opacity: 0;
+		}
+
+		header .menu-col p {
+			color:#f9f6f2;
+			-webkit-font-smoothing: antialiased;
+			margin-top:20px;
+			margin-bottom:0;
+		}
+
+		header.menu-open .menu-col {
+			opacity:1;
+			transition:opacity .3s ease;
+			transition-delay:.4s;
+		}
+
+		header nav a:hover {
+			color:#212529;
+			text-decoration: none;
+		}
+		header nav a:after {
+			clear:both;
+			content:'';
+			display: block;
+			position: absolute;
+			left:-10px;
+			bottom:0px;
+			top:0px;
+			width:0;
+			background:transparent;
+			-webkit-transform: skew(-4deg);
+			transform: skew(-4deg);
+			-webkit-transition:width .3s ease, background .3s ease;
+			transition:width .3s ease, background .3s ease;
+			z-index: -1;
+		}
+		header nav a:hover:after {
+			width:calc(100% + 25px);
+			background:#f9f6f2;
+		}
+
+		.logo-type {
+			position: fixed;
+			left:20px;
+			top:50%;
+			width:228px;
+			height:auto;
+			-webkit-transform: rotate(-90deg) translate(20px, -90px) translateZ(0) scale(1.0, 1.0);
+			transform: rotate(-90deg) translate(20px, -90px) translateZ(0) ;
+			z-index: 3;
+			webkit-backface-visibility: hidden;
+		}
+
+		.logo-type.logo-type-open-nav {
+			-webkit-transform: none;
+			transform: none;
+			/*top: 38px;
+    	left: 90px;*/
+			z-index: 999;
+		/*	width:200px;
+			height:auto;*/
+			position: static;
+			/*display:none;*/
+		}
+
+		.logo-type.logo-type-open-nav .logo-type-fill{
+			fill:#f9f6f2;
+		}
+
+		#vid-hero {
+			height:100vh;
+			position: relative;
+			min-height: 25rem;
+		  width: 100%;
+		  overflow: hidden;
+		}
+		#vid {
+			position: absolute;
+		  top: 50%;
+		  left: 50%;
+		  min-width: 100%;
+		  min-height: 100%;
+		  width: auto;
+		  height: auto;
+		  z-index: 0;
+		  display: block;
+		  opacity: .075;
+		  -ms-transform: translateX(-50%) translateY(-50%);
+		  -moz-transform: translateX(-50%) translateY(-50%);
+		  -webkit-transform: translateX(-50%) translateY(-50%);
+		  transform: translateX(-50%) translateY(-50%);
+		}
+		.hero-text {
+			position: absolute;
+			left:17%;
+			top:50%;
+			-webkit-transform:translateY(-50%);
+			transform:translateY(-50%);
+			padding-right:17%;
+			z-index: 2;
+		}
+		h2 {
+			font-size: 75px;
+			margin:0;
+			margin-bottom:30px;
+			font-family: BreveTitle-Light; 
+			font-weight: normal; 
+			font-style: normal; 
+			-webkit-font-smoothing: antialiased;
+			font-size: calc(40px + (65 - 40) * (100vw - 320px) / (1440 - 320));
+		}
+		h2 a {
+			color:#427387;
+			text-decoration: none;
+			cursor:url('images/more-arrow.svg'), auto;
+			display:inline-block;
+			position: relative;
+			/*cursor: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/9632/happy.png"), auto;*/
+			-webkit-transition:color .3s ease;
+			transition:color .3s ease;
+		}
+		h2 a:hover {
+			color:#f9f6f2;
+			text-decoration: none;
+		}
+		h2 a:after {
+			content:'';
+			position: absolute;
+			left:-10px;
+			bottom:0px;
+			top:0px;
+			width:0;
+			background:transparent;
+			-webkit-transform: skew(-4deg);
+			transform: skew(-4deg);
+			-webkit-transition:width .3s ease, background .3s ease;
+			transition:width .3s ease, background .3s ease;
+			z-index: -1;
+		}
+		h2 a:hover:after {
+			width:calc(100% + 20px);
+			background:#212529;
+		}
+
+		h3 {
+			font-family: urw-din, sans-serif;
+			font-weight: 500;
+			font-style: normal;
+			text-transform: uppercase;
+			letter-spacing: 2px;
+			font-size: 15px;
+			margin:0;
+			margin-bottom:30px;
+		}
+		p {
+			font-family: urw-din, sans-serif;
+			font-weight: 400;
+			font-style: normal;
+		}
+		.textbtn {
+			font-family: urw-din, sans-serif;
+			font-weight: 500;
+			font-style: normal;
+			text-transform: uppercase;
+			letter-spacing: 2px;
+			font-size: 15px;
+			color:#427387;
+			text-decoration: none;
+		}
+		.textbtn svg {
+			width:20px;
+			height:auto;
+			display: inline-block;
+			margin-left: 15px;
+		}
+		.offest-left {
+			padding:200px 100px 100px 220px;
+		/*	position: absolute;*/
+/*			left:220px;
+			right:100px;*/
+		}
+		#progress {
+	    width: 4px;
+	    background: #427387;
+	    bottom: 0;
+	    z-index: 9999;
+	    position: fixed;
+	    left:0;
+	    top:0;
+		}
+		section {
+			background:#f9f6f2;
+			transition:margin-left .5s ease;
+			position: relative;
+			z-index: 1
+		}
+		section.white {
+			background:#FFF;
+			/*-webkit-clip-path: polygon(0 0, 100% calc(0% + 7vw), 100% calc(100% - 7vw), 0 100%);
+  		clip-path: polygon(0 0, 100% calc(0% + 7vw), 100% calc(100% - 7vw), 0 100%);*/
+  		-webkit-clip-path: polygon(0 calc(0% + 6vw), 100% 0, 100% calc(100% - 6vw), 0 100%);
+    	clip-path: polygon(0 calc(0% + 6vw), 100% 0, 100% calc(100% - 6vw), 0 100%);
+    	margin-top: -6vw;
+    	margin-bottom:-6vw;
+    	z-index: 2;
+    	padding-top:200px;
+    	padding-bottom:200px;
+		}
+		section.white:before {
+			content:'';
+			position: absolute;
+			display: block;
+		/*	background: #FFF;
+			height:40px;*/
+			width:100%;
+			left:0;
+			right:0;
+			top:-40px;
+			/*border-style: solid;
+		  border-width: 0 100vw 40px 0;
+		  border-color: transparent transparent #FFF transparent;*/
+
+		}
+/*		section.shift {
+			margin-left:500px;
+		}*/
+		#social-icons {
+			position: fixed;
+			bottom:20px;
+			left:27px;
+			z-index: 999;
+			-webkit-transform:translateZ(0);
+			transform:translateZ(0) ;
+		}
+		#social-icons a {
+			display: inline-block;
+		}
+		#social-icons a img {
+			height:18px;
+			width: auto;
+			margin:0 3px;
+		}
+		.email {
+			font-family: urw-din, sans-serif;
+			font-weight: 500;
+			font-style: normal;
+			-webkit-font-smoothing: antialiased;
+			color:#427387;
+			clear:both;
+			display:block;
+			font-size:20px;
+			margin-top:15px;
+			line-height: 1;
+		}
+		.sep {
+			width:40px;
+			height:4px;
+			margin:25px 0;
+			background:#427387;
+			clear:both;
+			float:left;
+			-webkit-transform: skew(-4deg);
+			transform: skew(-4deg);
+		}
+		p small {
+			font-size: 11px;
+			/*text-transform: uppercase;*/
+		}
+		.flex-center {
+			-webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+		}
+		footer {
+			background: #427387;
+			height:100vh;
+			display: flex;
+			align-items:center;
+			position: fixed;
+			z-index: 0;
+			bottom:0;
+			left:0;
+			right:0;
+			top:0;
+		}
+		body section.last {
+			content:'';
+			display: block;
+			margin-bottom:100vh;
+		}
+		.scroll-down {
+			font-family: urw-din, sans-serif;
+			font-weight: 500;
+			font-style: normal;
+			text-transform: uppercase;
+			letter-spacing: 2px;
+			font-size: 15px;
+			color:#000;
+			text-decoration: none;
+		}
+		.hero-down {
+			height:16px;
+			width:auto;
+			margin-left: 10px;
+			position: relative;
+			top:-2px;
+		}
+		.bounce {
+		    -moz-animation: bounce 4s infinite;
+		    -webkit-animation: bounce 4s infinite;
+		    animation: bounce 4s infinite;
+		}
+		@-moz-keyframes bounce {
+		   0%, 80%, 90%, 100% {
+		    -moz-transform: translateY(0);
+		    transform: translateY(0);
+		  }
+		  85% {
+		    -moz-transform: translateY(-10px);
+		    transform: translateY(-10px);
+		  }
+		  95% {
+		    -moz-transform: translateY(-10px);
+		    transform: translateY(-10px);
+		  }
+		}
+		@-webkit-keyframes bounce {
+		  0%, 80%, 90%, 100% {
+		    -webkit-transform: translateY(0);
+		    transform: translateY(0);
+		  }
+		  85% {
+		    -webkit-transform: translateY(-10px);
+		    transform: translateY(-10px);
+		  }
+		  95% {
+		    -webkit-transform: translateY(-10px);
+		    transform: translateY(-10px);
+		  }
+		}
+		@keyframes bounce {
+		   0%, 80%, 90%, 100% {
+		    -moz-transform: translateY(0);
+		    -ms-transform: translateY(0);
+		    -webkit-transform: translateY(0);
+		    transform: translateY(0);
+		  }
+		  85% {
+		    -moz-transform: translateY(-10px);
+		    -ms-transform: translateY(-10px);
+		    -webkit-transform: translateY(-10px);
+		    transform: translateY(-10px);
+		  }
+		  95% {
+		    -moz-transform: translateY(-10px);
+		    -ms-transform: translateY(-10px);
+		    -webkit-transform: translateY(-10px);
+		    transform: translateY(-10px);
+		  }
+		}
+	</style>
+</head>
+<body>
+
+	<a href="#" >
+		<!-- <svg id="logo" viewBox="0 0 35.74 36.06" xmlns="http://www.w3.org/2000/svg">
+			<title>Logo</title>
+			<g data-name="Layer 2">
+			<g data-name="Layer 1">
+			<path class="b" d="M29,17.72c2.42-1.13,5.66-4.22,5.66-8.19C34.7,4.12,30,0,23.84,0H0V36.06H24.51c6.28,0,11.23-4.18,11.23-9.94C35.74,21.38,31.77,18.59,29,17.72Z"/>
+			<rect class="menu-bar-top menu-bar" x="7.9" y="7.41" width="16.44" height="3.4"/>
+			<rect class="menu-bar-middle menu-bar" x="7.9" y="15.84" width="13.46" height="3.4"/>
+			<rect class="menu-bar-bottom menu-bar" x="7.9" y="24.28" width="16.44" height="3.4"/>
+			</g>
+			</g>
+		</svg> -->
+		<svg id="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 37.35 34.11">
+			<title>Brodbeck Interactive Logo</title>
+			<g id="Layer_2" data-name="Layer 2">
+				<g id="Layer_1-2" data-name="Layer 1">
+					<path class="b" d="M31,16.76A8.53,8.53,0,0,0,35.43,9c0-5.11-4.48-9-10.28-9H0V.61C3.29,2.32,3.29,3.53,3.29,5L.19,34.11H26.73c5.94,0,10.62-3.95,10.62-9.41C37.35,20.22,33.6,17.59,31,16.76Z"/>
+					<polygon class="menu-bar-top menu-bar" points="25.87 7.01 10.57 7.01 10.23 10.23 25.52 10.23 25.87 7.01"/>
+					<polygon class="menu-bar-middle menu-bar" points="22.72 14.99 9.71 14.99 9.37 18.2 22.38 18.2 22.72 14.99"/>
+					<polygon class="menu-bar-bottom menu-bar" points="27.36 22.96 8.86 22.96 8.51 26.18 27.02 26.18 27.36 22.96"/>
+				</g>
+			</g>
+		</svg>
+	</a>
+	<header>
+		<div class="container">
+			<div class="row flex-center">
+				<div class="col-md-4 offset-md-2 menu-col">
+					<nav>
+						<a href="">about</a>
+						<a href="">work</a>
+						<a href="">contact</a>
+					</nav>
+				</div>
+				<div class="col-md-4 menu-col">
+					<p class="nav-text">Serving Philadelphia and beyond since 2013.</p>
+					<div class="sep"></div>
+					<a class="email" href="tel:717-870-0535">717.870.0535</a>
+					<a class="email" href="mailto:hello@brodbeckinteractive.com">hello@brodbeckinteractive.com</a>
+					<p><small>&copy; 2019 Brodbeck Interactive, LLC</small></p>
+				</div>
+			</div>
+		</div>
+		
+		
+	</header>
+	<div id="progress" data-0="height:0%;" data-end="height:100%;"></div>
+	<svg class="logo-type" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 131.42 10.59"><defs><style>.logo-type-fill{fill:#231f20;}</style></defs><title>logo-type</title><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><path class="logo-type-fill" d="M5.19,5.25c2,0,2.89,1.19,2.89,2.38,0,2.09-1.49,2.82-3.64,2.82H0V10.3c.78-.4.78-.69.78-1V1.19c0-.35,0-.64-.78-1V0H4.66c1.78,0,3,.73,3,2.7A2.32,2.32,0,0,1,5.19,5.18ZM3.82,9.52c1.26,0,1.88-.31,1.88-1.89S5.05,5.7,3.79,5.7H3.54V4.77h.22c1,0,1.51-.37,1.51-1.94S4.66.93,3.66.93H3.11V9.52Z"/><path class="logo-type-fill" d="M12.36,3.4a1.87,1.87,0,0,1,1.15-.35,3.55,3.55,0,0,1,.9.13l-.67,1.9A3.73,3.73,0,0,0,13,5a2.22,2.22,0,0,0-1.46.51V9.23c0,.38,0,.67,1,1.07v.15H8.69V10.3c.75-.4.75-.69.75-1.07V4.69a1.26,1.26,0,0,0-.75-1.35V3.19h2.83V5h0Z"/><path class="logo-type-fill" d="M18.09,3.05c2.48,0,3.6,1.49,3.6,3.77s-1.12,3.77-3.6,3.77-3.6-1.49-3.6-3.77S15.59,3.05,18.09,3.05Zm0,6.76c1,0,1.41-.74,1.41-2.86s-.43-3.12-1.41-3.12-1.41.74-1.41,2.86S17.09,9.81,18.09,9.81Z"/><path class="logo-type-fill" d="M29.43,9.26c0,.35,0,.64.76,1v.15H27.43l-.07-1.13h0l-1.22,1a2.24,2.24,0,0,1-1.06.23c-1.74,0-2.58-1.49-2.58-3.77,0-2.61,1.19-3.77,2.93-3.77a2.32,2.32,0,0,1,1.67.58v.22a2.28,2.28,0,0,0-.76-.14c-1.19,0-1.65,1-1.65,3s.48,2.53,1.39,2.53a2.27,2.27,0,0,0,1.31-.44V1.5A1.26,1.26,0,0,0,26.6.15V0h2.83Z"/><path class="logo-type-fill" d="M34.39,3.28a2.25,2.25,0,0,1,1.07-.23c1.67,0,2.59,1.36,2.59,3.63,0,2.67-1.35,3.91-3.22,3.91a3.8,3.8,0,0,1-1.95-.53l-1.65.53h-.15V1.5A1.25,1.25,0,0,0,30.31.15V0h2.83V4.32h0ZM33.14,9.45a3.2,3.2,0,0,0,1.15.23c1.2,0,1.55-1.18,1.55-2.86,0-1.87-.48-2.41-1.41-2.41a2.25,2.25,0,0,0-1.29.44Z"/><path class="logo-type-fill" d="M45.31,6.7H41c.09,1.44.81,2.54,2.29,2.54a3.24,3.24,0,0,0,1.87-.64v.15a2.62,2.62,0,0,1-2.81,1.85c-2.25,0-3.54-1.46-3.54-3.74a3.57,3.57,0,0,1,3.84-3.8,2.52,2.52,0,0,1,2.78,2.73A6.36,6.36,0,0,1,45.31,6.7Zm-1.78-.84a3.2,3.2,0,0,0,0-.52c0-1-.46-1.51-1.13-1.51-.83,0-1.41.63-1.48,2.29Z"/><path class="logo-type-fill" d="M51.64,4.86a2.39,2.39,0,0,0-1.72-1c-.9,0-1.68.58-1.68,2.58,0,1.57.73,2.8,2.29,2.8a3.3,3.3,0,0,0,1.88-.64v.15a2.64,2.64,0,0,1-2.82,1.85c-2.25,0-3.54-1.46-3.54-3.74a3.62,3.62,0,0,1,4-3.8,8.05,8.05,0,0,1,2.26.29l-.58,1.49Z"/><path class="logo-type-fill" d="M55.45,9.26c0,.35,0,.64.77,1v.15H52.63V10.3c.76-.4.76-.69.76-1V1.5A1.26,1.26,0,0,0,52.63.15V0h2.82Zm4.19-.35A2.92,2.92,0,0,0,61,10.3v.15H58.08L55.74,6.91l2.34-2.53A.49.49,0,0,0,58.26,4c0-.24-.24-.45-.85-.67V3.19h3.25v.15A6.06,6.06,0,0,0,59.11,4.5L57.7,5.8Z"/><path class="logo-type-fill" d="M67.3,9.26c0,.35,0,.64.8,1v.15H64.19V10.3c.79-.4.79-.69.79-1V1.19c0-.35,0-.64-.79-1V0H68.1V.15c-.8.4-.8.69-.8,1Z"/><path class="logo-type-fill" d="M72.85,3.38a2.46,2.46,0,0,1,1.22-.33,1.89,1.89,0,0,1,2.08,2.12V9.26c0,.35,0,.64.75,1v.15H73.48V10.3c.61-.4.61-.69.61-1V5.6c0-.61-.38-.87-1-.87a2.55,2.55,0,0,0-1.52.48V9.26c0,.35,0,.64.75,1v.15H68.78V10.3c.75-.4.75-.69.75-1V4.69a1.26,1.26,0,0,0-.75-1.35V3.19h2.83V4.66h0Z"/><path class="logo-type-fill" d="M79.93,8.91c0,.94.38,1.05,1.68,1v.14a4.45,4.45,0,0,1-2,.52c-1.06,0-1.73-.45-1.73-1.68v-5h-.7V3.73l1-.67,1.6-1.32h.14V3.19H81.6v.68H79.93Z"/><path class="logo-type-fill" d="M88.43,6.7H84.08c.09,1.44.81,2.54,2.29,2.54a3.24,3.24,0,0,0,1.87-.64v.15a2.62,2.62,0,0,1-2.81,1.85c-2.25,0-3.54-1.46-3.54-3.74a3.57,3.57,0,0,1,3.84-3.8,2.52,2.52,0,0,1,2.78,2.73A6.36,6.36,0,0,1,88.43,6.7Zm-1.78-.84a3.2,3.2,0,0,0,0-.52c0-1-.46-1.51-1.13-1.51-.83,0-1.41.63-1.48,2.29Z"/><path class="logo-type-fill" d="M92.71,3.4a1.87,1.87,0,0,1,1.15-.35,3.55,3.55,0,0,1,.9.13l-.67,1.9A3.73,3.73,0,0,0,93.33,5a2.22,2.22,0,0,0-1.46.51V9.23c0,.38,0,.67,1,1.07v.15H89V10.3c.75-.4.75-.69.75-1.07V4.69A1.26,1.26,0,0,0,89,3.34V3.19h2.83V5h0Z"/><path class="logo-type-fill" d="M95.7,3.45A7.24,7.24,0,0,1,98,3.05c1.73,0,2.92.59,2.92,2.26v4c0,.35,0,.64.75,1v.15H98.89l-.07-1.21-.89,1a2.22,2.22,0,0,1-1.29.34,1.85,1.85,0,0,1-2-2,1.88,1.88,0,0,1,1.7-1.84l2.43-.5V5.69a1.09,1.09,0,0,0-1.24-1.22,6.21,6.21,0,0,0-2.35.43l-.06-.05Zm1.67,3.83a.79.79,0,0,0-.48.82.89.89,0,0,0,.94,1,1.88,1.88,0,0,0,1-.34v-2Z"/><path class="logo-type-fill" d="M107.68,4.86a2.35,2.35,0,0,0-1.71-1c-.9,0-1.69.58-1.69,2.58,0,1.57.73,2.8,2.3,2.8a3.29,3.29,0,0,0,1.87-.64v.15a2.64,2.64,0,0,1-2.82,1.85c-2.25,0-3.54-1.46-3.54-3.74a3.62,3.62,0,0,1,4-3.8,8,8,0,0,1,2.26.29l-.58,1.49Z"/><path class="logo-type-fill" d="M111.43,8.91c0,.94.38,1.05,1.69,1v.14a4.53,4.53,0,0,1-2,.52c-1.06,0-1.73-.45-1.73-1.68v-5h-.69V3.73l1-.67,1.6-1.32h.14V3.19h1.67v.68h-1.67Z"/><path class="logo-type-fill" d="M116.21,9.26c0,.35,0,.64.76,1v.15h-3.58V10.3c.75-.4.75-.69.75-1V4.69a1.26,1.26,0,0,0-.75-1.35V3.19h2.82Zm-1-9.23a1.13,1.13,0,1,1-1.26,1.12A1.13,1.13,0,0,1,115.19,0Z"/><path class="logo-type-fill" d="M124.84,3.34a2.53,2.53,0,0,0-.89,1.3l-2.1,5.88h-1.76l-2.17-5.79a2.43,2.43,0,0,0-1-1.39V3.19h3.69v.15c-.48.17-.64.35-.64.59a1.57,1.57,0,0,0,.13.57l1.54,4.28,1.22-4.06a2.14,2.14,0,0,0,.1-.58c0-.34-.18-.61-.71-.8V3.19h2.54Z"/><path class="logo-type-fill" d="M131.35,6.7H127c.08,1.44.81,2.54,2.29,2.54a3.26,3.26,0,0,0,1.87-.64v.15a2.63,2.63,0,0,1-2.81,1.85c-2.25,0-3.55-1.46-3.55-3.74a3.58,3.58,0,0,1,3.85-3.8,2.52,2.52,0,0,1,2.77,2.73A8,8,0,0,1,131.35,6.7Zm-1.79-.84a3.26,3.26,0,0,0,.05-.52c0-1-.47-1.51-1.13-1.51-.83,0-1.41.63-1.48,2.29Z"/></g></g></svg>
+	<div id="social-icons">
+		<a href="#"><img src="images/facebook.svg"/></a>
+		<a href="#"><img src="images/insta.svg"/></a>
+	</div>
+
+	<section id="vid-hero">
+		<div class="hero-text">
+			<!-- <h3>This is Brodbeck Interactive</h3> -->
+			<h2>Design and development of custom web experiences for <a href="#">businesses</a> and <a href="#">agencies</a> like yours.</h2>
+			<a class="scroll-down" href="#">See for yourself <svg class="hero-down bounce" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9.84 16.9"><defs><style>.cls-1{fill:#282720;}</style></defs><title>down-arrow</title><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><polygon class="cls-1" points="9.85 11.6 8.96 10.78 5.52 14.48 5.52 0 4.32 0 4.32 14.48 0.88 10.78 0 11.6 4.92 16.9 9.85 11.6"/></g></g></svg></a>
+		</div>
+		<video autoplay muted loop id="vid">
+		  <source src="images/video-bkg-compressed.mp4" type="video/mp4">
+		</video>
+	</section>
+
+	<section id="samples" class="white offest-left">
+		<img src="images/project-placeholder.png" width="100%" height="auto"/>
+		<div class="row">
+
+		</div>
+	</section>
+
+	<section id="clients" class="offest-left last">
+		<img style="mix-blend-mode: multiply;" src="images/clients.png" />
+		<div class="row">
+
+		</div>
+	</section>
+
+	<footer>
+		<div class="container">
+			<img src="images/footer.png" />
+		</div>
+	</footer>
+
+
+
+	<script src="scripts/skrollr.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" ></script>
+	<script src="https://unpkg.com/tilt.js@1.1.21/dest/tilt.jquery.min.js"></script>
+	<script>
+
+		$(function() {
+
+			var s = skrollr.init();
+
+			$( "#logo" ).click(function(e) {
+				e.preventDefault();
+			  $('header').toggleClass('menu-open');
+			  $('.menu-bar-middle').toggleClass('hide-menu-bar');
+			  $('.menu-bar-top').toggleClass('bar-top-active');
+			  $('.menu-bar-bottom').toggleClass('bar-bottom-active');
+			  $('.b').toggleClass('active-b');
+			  $('section').toggleClass('shift')
+			  $(".logo-type").toggleClass("logo-type-open-nav").insertBefore( ".nav-text" );
+			  $(".logo-type:not(.logo-type-open-nav)").insertAfter("#progress");
+			});
+
+			// Hide the nav when click anywhere
+			// $(document).on("click", function(event){
+   //      var $trigger = $("#logo");
+   //      if($trigger !== event.target && !$trigger.has(event.target).length){
+   //        $('header').removeClass('menu-open');
+			// 	  $('.menu-bar-middle').removeClass('hide-menu-bar');
+			// 	  $('.menu-bar-top').removeClass('bar-top-active');
+			// 	  $('.menu-bar-bottom').removeClass('bar-bottom-active');
+			// 	  $('.b').removeClass('active-b');
+			// 	  $(".logo-type").removeClass("logo-type-open-nav").insertAfter( "#progress" );
+   //      }            
+   //  	});
+			
+		});
+	</script>
+	<script src="scripts/Brodbeck_Interactive_Site.js" ></script>
+</body>
+</html>
