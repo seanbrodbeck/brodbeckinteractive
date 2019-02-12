@@ -1,7 +1,19 @@
 footer {
-  padding: calc(20px + (60 - 20) * (100vw - 400px) / (1440 - 400)) calc(20px + (100 - 20) * (100vw - 400px) / (1440 - 400)) ;
+  /*padding: calc(20px + (60 - 20) * (100vw - 400px) / (1440 - 400)) calc(20px + (100 - 20) * (100vw - 400px) / (1440 - 400)) ;*/
+  background:$blue;
+	height:100vh;
+	@include flexbox();
+	@include align-items(center);
+	position: fixed;
+	z-index: 0;
+	bottom:0;
+	left:0;
+	right:0;
+	top:0;
+	padding-left:220px;
+	padding-right:120px;
 	@media (min-width: $bp-xlg-min) {
-		padding:60px 100px;
+		/*padding:60px 100px;*/
 	}
 	
 }

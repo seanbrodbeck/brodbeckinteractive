@@ -14,18 +14,13 @@
 	</div><!-- #content -->
 
 	<footer id="colophon" class="site-footer">
-		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'bi' ) ); ?>">
-				<?php
-				/* translators: %s: CMS name, i.e. WordPress. */
-				printf( esc_html__( 'Proudly powered by %s', 'bi' ), 'WordPress' );
-				?>
-			</a>
-			<span class="sep"> | </span>
-				<?php
-				/* translators: 1: Theme name, 2: Theme author. */
-				printf( esc_html__( 'Theme: %1$s by %2$s.', 'bi' ), 'bi', '<a href="http://brodbeckinteractive.com">Brodbeck Interactive</a>' );
-				?>
+		<div class="row">
+			<div class="col-md-7">
+				<h2>I'm flattered! You made it all the way to the bottom. How can I help you?</h2>
+				<a class="btn" href="#">hello@brodbeckinteractive.com</a>
+				<?php wp_nav_menu( array( 'menu_id' => 'primary-menu',) );?>
+				<small>&copy; <?php the_time('Y'); ?> Brodbeck Interactive, LLC</small>
+			</div>
 		</div><!-- .site-info -->
 	</footer><!-- #colophon -->
 </div><!-- #page -->

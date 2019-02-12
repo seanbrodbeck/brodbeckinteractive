@@ -120,11 +120,24 @@ add_action( 'widgets_init', 'bi_widgets_init' );
  * Enqueue scripts and styles.
  */
 function bi_scripts() {
+
+	wp_enqueue_style( 'bi-typekit', '//use.typekit.net/hlt5jvl.css', array(), null, 'all' );
+
 	wp_enqueue_style( 'bi-style', get_stylesheet_uri() );
+
+	wp_enqueue_style( 'bi-bootstrap', get_template_directory_uri() . '/dist/css/bootstrap.min.css', array(), null, 'all');
+
+	wp_enqueue_style( 'bi-theme', get_template_directory_uri() . '/dist/css/styles.css', array(), null, 'all');
 
 	wp_enqueue_script( 'bi-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
 
 	wp_enqueue_script( 'bi-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
+
+	wp_enqueue_script( 'bi-bootstrap-js', get_template_directory_uri() . '/dist/js/bootstrap.min.js', array(), null , true );
+
+	wp_enqueue_script( 'bi-skrollr', get_template_directory_uri() . '/dist/js/skrollr.min.js', array(), null , true );
+
+	wp_enqueue_script( 'bi-theme-js', get_template_directory_uri() . '/dist/js/scripts.js?id=1', array('jquery'), null , true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );

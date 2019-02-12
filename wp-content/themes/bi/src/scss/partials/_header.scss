@@ -1,9 +1,235 @@
 header {
-	padding: calc(20px + (60 - 20) * (100vw - 400px) / (1440 - 400)) calc(20px + (100 - 20) * (100vw - 400px) / (1440 - 400)) 0;
+	position:fixed;
+	left: -100%;
+	width:100%;
+	top:0;
+	bottom:0;
+	padding:20% 100px 0 40px;
+	background:rgba(40, 39, 32, 0);
+	z-index: 998;
+	-webkit-transition:left .5s ease, background .5s ease;
+	transition:left .5s ease, background .5s ease;
+	height:100%;
+	-webkit-transform: translateZ(0); /* promotes to a layer */
 	
 	@media (min-width: $bp-xlg-min) {
-		padding: 60px 100px 0;
+		/*padding: 60px 100px 0;*/
 	}
 
-	
+	&:after {
+		content: '';
+		display: block;
+		border-right:1px solid rgba(0, 0, 0, 0.20);
+		position: absolute;
+		right:-100px;
+		top:0;
+		bottom:0;
+		height:100%;
+		-webkit-transition:right .5s ease;
+		transition:right .5s ease;
+	}
+
+	&.menu-open {
+		left:0;
+		/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#44443f+0,282720+46&0.98+0,0.98+46 */
+		background: -moz-linear-gradient(-45deg, rgba(68,68,63,0.98) 0%, rgba(40,39,32,0.98) 46%); 
+		background: -webkit-linear-gradient(-45deg, rgba(68,68,63,0.98) 0%,rgba(40,39,32,0.98) 46%); 
+		background: linear-gradient(135deg, rgba(68,68,63,0.98) 0%,rgba(40,39,32,0.98) 46%); 
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fa44443f', endColorstr='#fa282720',GradientType=1 ); 
+		background:rgba(40, 39, 32, 0.98);
+		-webkit-transition:left .5s ease, background .5s ease;
+		transition:left .5s ease, background .5s ease;
+		&:after {
+			right:0;
+		}
+		.nav {
+			a {
+				color:#f9f6f2;
+			}
+		}
+		.menu-col {
+			opacity:1;
+			transition:opacity .3s ease;
+			transition-delay:.4s;
+		}
+	}
+
+	nav {
+		li {
+			display: block!important;
+			float:none!important;
+			a, a:visited {
+				color:transparent;
+				display: block;
+				width: inherit;
+				color:#f9f6f2;
+				font-size: 60px;
+				margin:8px 0;
+				padding:10px 0 5px;
+				text-decoration: none;
+				line-height: 1;
+				/*letter-spacing: 2px;*/
+				font-family: BreveTitle-Light; 
+				font-weight: normal; 
+				font-style: normal; 
+				-webkit-font-smoothing: antialiased;
+				position: relative;
+				float:left;
+				clear:both;
+				cursor:url('/wp-content/themes/bi/dist/images/more-arrow.svg'), auto;
+				transition:color .3s ease;
+				&:hover {
+					color:#212529;
+					text-decoration: none;
+					&:after {
+						width:calc(100% + 25px);
+						background:#f9f6f2;
+					}
+				}
+				&:after {
+					clear:both;
+					content:'';
+					display: block;
+					position: absolute;
+					left:-10px;
+					bottom:0px;
+					top:0px;
+					width:0;
+					background:transparent;
+					-webkit-transform: skew(-4deg);
+					transform: skew(-4deg);
+					-webkit-transition:width .3s ease, background .3s ease;
+					transition:width .3s ease, background .3s ease;
+					z-index: -1;
+				}
+			}
+		}
+	}
+
+	.menu-col {
+		opacity: 0;
+		p {
+			color:#f9f6f2;
+			-webkit-font-smoothing: antialiased;
+			margin-top:20px;
+			margin-bottom:0;
+		}
+	}
+
+}
+
+#logo {
+	width:38px;
+	height:auto;
+	position: fixed;
+	top:30px;
+	left:30px;
+	z-index: 999;
+	transition: transform 200ms ease;
+	-webkit-transform:translateZ(0);
+	transform:translateZ(0) ;
+	&:hover {
+		-webkit-transform: scale(1.075);
+		transform: scale(1.075);
+		transition: transform 200ms ease;
+	}
+	.b {
+		fill:#282720;
+		transition:fill .2s ease;
+		&.active-b {
+			fill:$blue;
+		}
+	}
+	&:hover .b {
+		fill:$blue;
+	}
+	.menu-bar {
+		fill:#f9f6f2;
+		/*transition:fill .2s ease, opacity .2s ease;*/
+		transition: all 0.3s ease;
+		transition: all 0.3s ease;
+		opacity:1;
+		&.hide-menu-bar{
+			opacity:0;
+		}
+	}
+	.menu-bar-top.bar-top-active {
+		-webkit-transform: rotate(45deg) scale(1.2, 1) translate(3px, -9px);
+  	transform: rotate(45deg) scale(1.2, 1) translate(3px, -9px);
+	}
+	.menu-bar-bottom.bar-bottom-active {
+		-webkit-transform: rotate(-45deg) translate(-18px, 0);
+  	transform: rotate(-45deg) translate(-18px, 0);
+	}
+}
+
+.logo-type {
+	position: fixed;
+	left:20px;
+	top:50%;
+	width:228px;
+	height:auto;
+	-webkit-transform: rotate(-90deg) translate(20px, -90px) translateZ(0) scale(1.0, 1.0);
+	transform: rotate(-90deg) translate(20px, -90px) translateZ(0) ;
+	z-index: 3;
+	webkit-backface-visibility: hidden;
+	&.logo-type-open-nav {
+		-webkit-transform: none;
+		transform: none;
+		z-index: 999;
+		position: static;
+		.logo-type-fill{
+			fill:#f9f6f2;
+		}
+	}
+}
+
+#social-icons {
+	position: fixed;
+	bottom:20px;
+	left:27px;
+	z-index: 999;
+	-webkit-transform:translateZ(0);
+	transform:translateZ(0) ;
+	a {
+		display: inline-block;
+		img {
+			height:18px;
+			width: auto;
+			margin:0 3px;
+		}
+	}
+}
+
+.email {
+	font-family: urw-din, sans-serif;
+	font-weight: 500;
+	font-style: normal;
+	-webkit-font-smoothing: antialiased;
+	color:$blue;
+	clear:both;
+	display:block;
+	font-size:20px;
+	margin-top:15px;
+	line-height: 1;
+}
+.sep {
+	width:40px;
+	height:4px;
+	margin:25px 0;
+	background:$blue;
+	clear:both;
+	float:left;
+	-webkit-transform: skew(-4deg);
+	transform: skew(-4deg);
+}
+
+#progress {
+  width: 4px;
+  background: $blue;
+  bottom: 0;
+  z-index: 9999;
+  position: fixed;
+  left:0;
+  top:0;
 }

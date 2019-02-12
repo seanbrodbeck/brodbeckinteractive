@@ -1,4 +1,9 @@
 body {
+  font-family: benton-modern-display, serif;
+  font-weight: 400;
+  font-style: normal;
+  padding:0;
+  margin:0;
   font-size: calc(16px + (20 - 16) * (100vw - 320px) / (1440 - 320));
   @media (min-width: $bp-xlg-min) {
     font-size: 20px;
@@ -17,12 +22,43 @@ h1  {
 
 h2 {
 	
-  font-size: calc(20px + (32 - 20) * (100vw - 320px) / (1440 - 320));
-
+  font-size: 75px;
+  margin:0;
+  margin-bottom:30px;
+  font-family: BreveTitle-Light; 
+  font-weight: normal; 
+  font-style: normal; 
+  -webkit-font-smoothing: antialiased;
+  font-size: calc(40px + (65 - 40) * (100vw - 320px) / (1440 - 320));
+  a {
+    color:$blue;
+    text-decoration: none;
+    cursor:url('images/more-arrow.svg'), auto;
+    display:inline-block;
+    position: relative;
+    /*cursor: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/9632/happy.png"), auto;*/
+    -webkit-transition:color .3s ease;
+    transition:color .3s ease;
+    &:hover {
+      color:$offwhite;
+      text-decoration: none;
+    }
+    &:after {
+      width:calc(100% + 20px);
+      background:$gray;
+    }
+  }
 }
 
 h3 {
-  font-size: 20px;
+  font-family: urw-din, sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 15px;
+  margin:0;
+  margin-bottom:30px;
 	a, a:visited {
    
     &:hover {
@@ -36,7 +72,9 @@ h4 {
 }
 
 p {
-	
+	font-family: urw-din, sans-serif;
+  font-weight: 400;
+  font-style: normal;
   font-size: calc(14px + (16 - 14) * (100vw - 320px) / (1440 - 320));
   strong {
    
