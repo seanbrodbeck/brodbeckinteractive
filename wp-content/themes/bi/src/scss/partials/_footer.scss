@@ -1,0 +1,7 @@
+footer {
+  padding: calc(20px + (60 - 20) * (100vw - 400px) / (1440 - 400)) calc(20px + (100 - 20) * (100vw - 400px) / (1440 - 400)) ;
+	@media (min-width: $bp-xlg-min) {
+		padding:60px 100px;
+	}
+	
+}

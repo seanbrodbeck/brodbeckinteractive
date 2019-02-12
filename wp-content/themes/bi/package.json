@@ -1,0 +1,19 @@
+{
+  "name": "brodbeckInteractive",
+  "version": "1.0.0",
+  "description": "The most awesome WP theme",
+  "main": "index.js",
+  "scripts": {
+    "test": "testme",
+    "build-css": "node-sass --include-path scss src/scss/styles.scss dist/css/styles.css --output-style compressed",
+    "watch-css": "nodemon -e scss -x \"npm run build-css\"",
+    "dev": "npm run watch-css",
+    "minify": "node-sass --include-path scss src/scss/styles.scss dist/css/styles.css --output-style compressed"
+  },
+  "author": "Sean Brodbeck",
+  "license": "ISC",
+  "devDependencies": {
+    "node-sass": "^4.5.3",
+    "nodemon": "^1.12.1"
+  }
+}

@@ -1,0 +1,71 @@
+body {
+  font-size: calc(16px + (20 - 16) * (100vw - 320px) / (1440 - 320));
+  @media (min-width: $bp-xlg-min) {
+    font-size: 20px;
+  }
+  
+  i {
+    
+  }
+}
+
+h1  {
+	
+  font-size: calc(20px + (32 - 20) * (100vw - 320px) / (1440 - 320));
+  
+}
+
+h2 {
+	
+  font-size: calc(20px + (32 - 20) * (100vw - 320px) / (1440 - 320));
+
+}
+
+h3 {
+  font-size: 20px;
+	a, a:visited {
+   
+    &:hover {
+      
+    }
+  }
+}
+
+h4 {
+
+}
+
+p {
+	
+  font-size: calc(14px + (16 - 14) * (100vw - 320px) / (1440 - 320));
+  strong {
+   
+  }
+}
+
+strong {
+  font-weight: 600;
+}
+
+
+blockquote {
+
+
+}
+
+.aligncenter {
+	text-align: center;
+}
+
+a {
+  
+	&:hover, &:active {
+		outline:none;
+		text-decoration: none;
+	}
+}
+
+::selection, ::-moz-selection {
+  background-color: $blue;
+  color: #fff;
+}

@@ -1,0 +1,11 @@
+main {
+	section {
+
+		padding: calc(18px + (100 - 18) * (100vw - 400px) / (1440 - 400)) 0;
+		@media (min-width: $bp-xlg-min) {
+			padding: 100px 0;
+		}
+
+		
+	}
+}
